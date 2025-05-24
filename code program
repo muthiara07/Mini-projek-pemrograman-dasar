@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    // Input tetap sesuai permintaan
+    float targetMinum = 1.0;    // 1 liter
+    float durasiBelajar = 4.0;  // 4 jam
+    
+    // Input waktu mulai minum
+    int jamMulai;
+    printf("Masukkan jam mulai belajar (format 24 jam, contoh: 8 untuk jam 8 pagi): ");
+    scanf("%d", &jamMulai);
+    
+    // Konversi liter ke mililiter
+    float targetMl = targetMinum * 1000;
+    
+    // Hitung jumlah minum per jam
+    float mlPerJam = targetMl / durasiBelajar;
+    
+    // Output jadwal minum
+    printf("\nJadwal minum air selama belajar:\n");
+    printf("Target minum: %.0f liter dalam %.0f jam\n", targetMinum, durasiBelajar);
+    printf("Dimulai dari jam %d.00 sampai jam %d.00\n\n", jamMulai, jamMulai + (int)durasiBelajar);
+    
+    for (int jam = 1; jam <= durasiBelajar; jam++) {
+        printf("Jam %d.00: Minum %.0f ml\n", jamMulai + jam - 1, mlPerJam);
+    }
+    
+    // Meminta input total air yang diminum
+    float totalMinum;
+    printf("\nMasukkan total air yang sudah diminum (dalam liter): ");
+    scanf("%f", &totalMinum);
+    
+    // Mengecek apakah sudah minum cukup atau tidak
+    if (totalMinum >= targetMinum) {
+        printf("Selamat! Anda tidak dehidrasi karena sudah minum %.1f liter.\n", totalMinum);
+    } else {
+        printf("Anda dehidrasi karena hanya minum %.1f liter (kurang dari 1 liter).\n", totalMinum);
+    }
+    
+    return 0;
+}
